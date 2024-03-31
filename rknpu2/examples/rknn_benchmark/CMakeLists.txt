@@ -10,10 +10,10 @@ set(RKNN_API_PATH ${CMAKE_SOURCE_DIR}/../../runtime//${CMAKE_SYSTEM_NAME}/librkn
 if (CMAKE_SYSTEM_NAME STREQUAL "Android")
   set(RKNN_RT_LIB ${RKNN_API_PATH}/${CMAKE_ANDROID_ARCH_ABI}/librknnrt.so)
 else()
-  if (CMAKE_C_COMPILER MATCHES "aarch64")
-    set(LIB_ARCH aarch64)
-  else()
+  if (CMAKE_C_COMPILER MATCHES "armhf") # Better use aarch64 by default
     set(LIB_ARCH armhf)
+  else()
+    set(LIB_ARCH aarch64)
   endif()
   set(RKNN_RT_LIB ${RKNN_API_PATH}/${LIB_ARCH}/librknnrt.so)
 endif()
@@ -32,7 +32,6 @@ target_link_libraries(rknn_benchmark
 	${RKNN_RT_LIB}
 	${OpenCV_LIBS}
 )
-
 
 # install target and libraries
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install/rknn_benchmark_${CMAKE_SYSTEM_NAME})

@@ -24,7 +24,7 @@ while getopts ":t:a:b" opt; do
   esac
 done
 
-if [ -z ${TARGET_SOC} ];then
+if [ -z ${TARGET_SOC} ]; then
   echo "$0 -t <target> -a <arch> [-b <build_type>]"
   echo ""
   echo "    -t : target (rk3566/rk3568/rk3562/rk3576/rk3588/rv1126b)"
@@ -35,14 +35,14 @@ if [ -z ${TARGET_SOC} ];then
   exit -1
 fi
 
-if [[ -z ${GCC_COMPILER} ]];then
-  echo "Please set GCC_COMPILER for $TARGET_SOC"
-  echo "such as export GCC_COMPILER=~/opt/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu"
-  exit
-fi
-echo "$GCC_COMPILER"
 export CC=${GCC_COMPILER}-gcc
 export CXX=${GCC_COMPILER}-g++
+
+if [[ -z ${GCC_COMPILER} ]]; then
+  echo "Using gcc and g++ by default..."
+  CC=/usr/bin/gcc
+  CXX=/usr/bin/g++
+fi
 
 if command -v ${CC} >/dev/null 2>&1; then
     :
@@ -54,10 +54,9 @@ else
 fi
 
 # Debug / Release
-if [[ -z ${BUILD_TYPE} ]];then
+if [[ -z ${BUILD_TYPE} ]]; then
     BUILD_TYPE=Release
 fi
-
 
 case ${TARGET_SOC} in
     rk356x)
@@ -95,6 +94,7 @@ TARGET_PLATFORM=${TARGET_SOC}_linux
 if [[ -n ${TARGET_ARCH} ]];then
 TARGET_PLATFORM=${TARGET_PLATFORM}_${TARGET_ARCH}
 fi
+
 ROOT_PWD=$( cd "$( dirname $0 )" && cd -P "$( dirname "$SOURCE" )" && pwd )
 BUILD_DIR=${ROOT_PWD}/build/build_${TARGET_PLATFORM}_${BUILD_TYPE}
 
