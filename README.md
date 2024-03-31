@@ -1,3 +1,32 @@
+# EZ RKNN Toolkit 2
+This repo tries to make RKNN Toolkit 2 install easier and more organised. RKNN Toolkit is the software used for testing and using the NPU inside Rockchip's chips like the RK3588 found in the Orange Pi 5 and Radxa Rock 5
+
+## Quick Install
+Run:
+
+```bash
+git clone https://github.com/Pelochus/EZRKNN-Toolkit2.git
+cd EZRKNN-Toolkit2/
+bash quick-install.sh
+```
+
+Keep in mind this is focused for:
+- ARM64 devices.
+- You are running either Debian 11 or Ubuntu 22.04 or later versions. Derivatives should possibly work fine too.
+- Possibly will work better on not heavily modified OS installations (i.e. not using an older Python version or too recent)
+
+## References
+- Lots of info here, but not very well organised: https://github.com/airockchip/rknn-toolkit2/tree/master
+- Example of CV and developing. I extracted some commands for installing: https://github.com/Qengineering/YoloV5-NPU-Rock-5
+- This link explains the main capabilities of RKNN Toolkit 2: https://wiki.t-firefly.com/en/ROC-RK3588S-PC/usage_npu.html#rknn-toolkit2
+- Some basic but well explained info for Radxa devices: https://docs.radxa.com/en/rock5/rock5b/low-level-dev/rknn-toolkit2  
+
+# Original README starts below
+
+<hr>
+<hr>
+<hr>
+
 # Description
   RKNN software stack can help users to quickly deploy AI models to Rockchip chips. The overall framework is as follows:
     <center class="half">
@@ -24,7 +53,6 @@
   - RV1103B/RV1106B
   - RV1126B
   - RK2118
-
 
 Note:
 
@@ -53,15 +81,11 @@ Note:
   - Python 3.12
 - Latest version:v2.3.2
 
-
-
 # RKNN LLM
 
 If you want to deploy LLM (Large Language Model), we have introduced a new SDK called RKNN-LLM. For details, please refer to:
 
 https://github.com/airockchip/rknn-llm
-
-
 
 # CHANGELOG
 
@@ -86,5 +110,3 @@ https://github.com/airockchip/rknn-llm
   <img width="200" height="200"  src="res/QQGroup3QRCode.png" title="QQ Group Chat3"/>
   <img width="200" height="200"  src="res/QQGroup4QRCode.png" title="QQ Group Chat4"/>
 </center>
-
-
