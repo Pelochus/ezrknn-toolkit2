@@ -1,25 +1,65 @@
-# EZ RKNN Toolkit 2
-This repo tries to make RKNN Toolkit 2 install easier and more organised. RKNN Toolkit is the software used for testing and using the NPU inside Rockchip's chips like the RK3588 found in the Orange Pi 5 and Radxa Rock 5
+# ezrknn-toolkit2
+This repo tries to make RKNN Toolkit 2 install easier and more organised. RKNN Toolkit is the software used for testing and using the NPU inside Rockchip's chips like the RK3588 found in the Orange Pi 5 and Radxa Rock 5.
+This repo installs easily the utilities for running AI with the NPU on the boards, it does not install the Android utilities, simulator, server... 
+
+## Requirements
+Keep in mind this repo is focused for:
+- Only installing what's needed for Linux and running on the SBCs, not the simulator, server and other tools.
+- ARM64 devices, focusing mainly on RK3588, but it should work on other RK SoCs.
+- You are running either Debian 11 or Ubuntu 22.04 or later versions. Derivatives should possibly work fine too.
+- Possibly will work better on not heavily modified OS installations (i.e. not using an older Python version or too recent)
 
 ## Quick Install
 Run:
 
 ```bash
-git clone https://github.com/Pelochus/EZRKNN-Toolkit2.git
-cd EZRKNN-Toolkit2/
-bash quick-install.sh
+curl https://raw.githubusercontent.com/Pelochus/ezrknn-toolkit2/master/install.sh | sudo bash
 ```
 
-Keep in mind this is focused for:
-- ARM64 devices.
-- You are running either Debian 11 or Ubuntu 22.04 or later versions. Derivatives should possibly work fine too.
-- Possibly will work better on not heavily modified OS installations (i.e. not using an older Python version or too recent)
+## Test
+Run (cd is required):
+
+```bash
+cd rknn-toolkit-lite2/examples/resnet18
+python3 test.py
+```
+
+It should output this:
+
+```
+--> Load RKNN model
+done
+--> Init runtime environment
+I RKNN: [21:37:24.622] RKNN Runtime Information, librknnrt version: 2.0.0b0 (35a6907d79@2024-03-24T10:31:14)
+I RKNN: [21:37:24.622] RKNN Driver Information, version: 0.9.5
+I RKNN: [21:37:24.623] RKNN Model Information, version: 6, toolkit version: 2.0.0b0+9bab5682(compiler version: 2.0.0b0 (35a6907d79@2024-03-24T02:34:11)), target: RKNPU v2, target platform: rk3588, framework name: PyTorch, framework layout: NCHW, model inference type: static_shape
+done
+--> Running model
+resnet18
+-----TOP 5-----
+[812] score:0.999680 class:"space shuttle"
+[404] score:0.000249 class:"airliner"
+[657] score:0.000013 class:"missile"
+[466] score:0.000009 class:"bullet train, bullet"
+[895] score:0.000008 class:"warplane, military plane"
+
+done
+```
+
+This doesn't use the NPU. Check this issue to actually test NPU usage: https://github.com/Pelochus/ezrknn-toolkit2/issues/2
 
 ## References
+- Dedicated subreddit: https://www.reddit.com/r/RockchipNPU/
 - Lots of info here, but not very well organised: https://github.com/airockchip/rknn-toolkit2/tree/master
 - Example of CV and developing. I extracted some commands for installing: https://github.com/Qengineering/YoloV5-NPU-Rock-5
 - This link explains the main capabilities of RKNN Toolkit 2: https://wiki.t-firefly.com/en/ROC-RK3588S-PC/usage_npu.html#rknn-toolkit2
-- Some basic but well explained info for Radxa devices: https://docs.radxa.com/en/rock5/rock5b/low-level-dev/rknn-toolkit2  
+- Some basic but well explained info for Radxa devices: https://docs.radxa.com/en/rock5/rock5b/low-level-dev/rknn-toolkit2
+- Unrelated, but could be useful for other AI applications: https://www.roselladb.com/install-opencl-orangepi5-debian-ubuntu.htm
+
+## TODO
+- Make new repo structure:
+  - New repo which contain 2 submodules: this repo and rk-llm
+  - If so, simplify this repo (documentation, just one script and the rest shall only be minor modifications (like the CMakeLists.txt one in rknn-bench)
 
 # Original README starts below
 
