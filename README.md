@@ -2,6 +2,8 @@
 This repo tries to make RKNN Toolkit 2 install easier and more organised. RKNN Toolkit is the software used for testing and using the NPU inside Rockchip's chips like the RK3588 found in the Orange Pi 5 and Radxa Rock 5.
 This repo installs easily the utilities for running AI with the NPU on the boards, it does not install the Android utilities, simulator, server... 
 
+Main repo is https://github.com/Pelochus/ezrknpu where you can find more instructions, documentation... for general use.
+
 ## Requirements
 Keep in mind this repo is focused for:
 - Only installing what's needed for Linux and running on the SBCs, not the simulator, server and other tools.
@@ -10,10 +12,16 @@ Keep in mind this repo is focused for:
 - Possibly will work better on not heavily modified OS installations (i.e. not using an older Python version or too recent)
 
 ## Quick Install
-Run:
+First clone the repo:
 
 ```bash
-curl https://raw.githubusercontent.com/Pelochus/ezrknn-toolkit2/master/install.sh | sudo bash
+git clone https://github.com/Pelochus/ezrknn-toolkit2
+```
+
+Then run:
+
+```bash
+cd ezrknn-toolkit2 && bash install.sh
 ```
 
 ## Test
@@ -47,19 +55,6 @@ done
 ```
 
 This doesn't use the NPU. Check this issue to actually test NPU usage: https://github.com/Pelochus/ezrknn-toolkit2/issues/2
-
-## References
-- Dedicated subreddit: https://www.reddit.com/r/RockchipNPU/
-- Lots of info here, but not very well organised: https://github.com/airockchip/rknn-toolkit2/tree/master
-- Example of CV and developing. I extracted some commands for installing: https://github.com/Qengineering/YoloV5-NPU-Rock-5
-- This link explains the main capabilities of RKNN Toolkit 2: https://wiki.t-firefly.com/en/ROC-RK3588S-PC/usage_npu.html#rknn-toolkit2
-- Some basic but well explained info for Radxa devices: https://docs.radxa.com/en/rock5/rock5b/low-level-dev/rknn-toolkit2
-- Unrelated, but could be useful for other AI applications: https://www.roselladb.com/install-opencl-orangepi5-debian-ubuntu.htm
-
-## TODO
-- Make new repo structure:
-  - New repo which contain 2 submodules: this repo and rk-llm
-  - If so, simplify this repo (documentation, just one script and the rest shall only be minor modifications (like the CMakeLists.txt one in rknn-bench)
 
 # Original README starts below
 
