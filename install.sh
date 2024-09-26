@@ -25,8 +25,8 @@ fi
 
 message_print "Installing pip dependencies for ARM64..."
 
-pip install ./rknn-toolkit-lite2/packages/rknn_toolkit_lite2-2.0.0b0-cp311-cp311-linux_aarch64.whl
-pip install -r ./rknn-toolkit2/packages/requirements_cp311-2.0.0b0.txt
+pip install ./rknn-toolkit-lite2/packages/rknn_toolkit_lite2-2.1.0-cp311-cp311-linux_aarch64.whl
+pip install -r ./rknn-toolkit2/packages/requirements_cp311-2.1.0.txt
 
 message_print "Installing RKNN NPU API..."
 
