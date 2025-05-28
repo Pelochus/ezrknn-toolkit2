@@ -46,14 +46,14 @@ message_print "Installing pip dependencies for ARM64..."
 
 if [ -f "$PIP_WHL" ]
 then
-    pip install "$PIP_WHL"
+    pip install "$PIP_WHL" --break-system-packages
 else
     file_not_found_exit "$PIP_WHL"
 fi
 
 if [ -f "$REQS_FILE" ]
 then
-    pip install -r "$REQS_FILE"
+    pip install -r "$REQS_FILE" --break-system-packages
 else
     file_not_found_exit "$REQS_FILE"
 fi
